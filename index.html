@@ -98,6 +98,7 @@
         <div class="hidden md:flex items-center gap-8 ml-10">
           <a href="#about" class="text-white/80 hover:text-white text-sm font-medium transition">Qué es</a>
           <a href="#unidades" class="text-white/80 hover:text-white text-sm font-medium transition">Unidades</a>
+          <a href="#booth" class="text-white/80 hover:text-white text-sm font-medium transition">El Booth</a>
           <a href="#artistas" class="text-white/80 hover:text-white text-sm font-medium transition">Artistas</a>
         </div>
       </div>
@@ -113,9 +114,9 @@
     <!-- glass email pill -->
     <div class="mt-10 max-w-xl w-full">
       <div class="liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-3">
-        <input type="email" placeholder="Déjanos tu correo y entra a la comunidad"
+        <input type="email" id="commEmail" placeholder="Déjanos tu correo y entra a la comunidad"
           class="bg-transparent flex-1 outline-none text-white placeholder:text-white/40 text-sm py-2">
-        <button class="bg-white rounded-full p-3 text-black hover:scale-105 transition" aria-label="Enviar">
+        <button id="commBtn" data-tally-open="WOd2dk" data-tally-overlay="1" data-tally-emoji-text="" class="bg-white rounded-full p-3 text-black hover:scale-105 transition" aria-label="Unirme a la comunidad">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
       </div>
@@ -163,8 +164,10 @@
 <!-- ================= FEATURED VIDEO ================= -->
 <section class="pt-6 md:pt-10 pb-20 md:pb-32 px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto">
-    <div class="reveal rounded-3xl overflow-hidden aspect-video relative">
-      <div class="w-full h-full" style="background:radial-gradient(600px 400px at 30% 18%, rgba(255,255,255,.07), transparent 60%), linear-gradient(135deg,#0e0e13,#000 70%)"></div>
+    <div class="reveal rounded-3xl overflow-hidden aspect-video relative" style="background:linear-gradient(135deg,#0e0e13,#000 70%)">
+      <video muted loop playsinline preload="none" data-lazy class="absolute inset-0 w-full h-full object-cover">
+        <source data-src="assets/video/featured.mp4" type="video/mp4">
+      </video>
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div class="liquid-glass rounded-2xl p-6 md:p-8 max-w-md">
@@ -189,8 +192,10 @@
       Artistas <span class="italic text-white/40">x</span> Industria
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-      <div class="reveal-x-l rounded-3xl overflow-hidden aspect-[4/3] liquid-glass flex items-center justify-center" style="background:radial-gradient(500px 380px at 50% 40%, rgba(255,255,255,.06), transparent 60%), linear-gradient(135deg,#0e0e13,#000 70%)">
-        <img src="assets/gv-isotipo.png" alt="Gato Verde" class="w-24 opacity-20">
+      <div class="reveal-x-l rounded-3xl overflow-hidden aspect-[4/3] liquid-glass relative" style="background:linear-gradient(135deg,#0e0e13,#000 70%)">
+        <video muted loop playsinline preload="none" data-lazy class="absolute inset-0 w-full h-full object-cover">
+          <source data-src="assets/video/clip1.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="reveal-x-r">
         <div>
@@ -216,27 +221,41 @@
       <span class="text-white/40 text-sm hidden md:inline">Las 4 unidades</span>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      <div class="reveal liquid-glass rounded-3xl overflow-hidden group">
-        <div class="aspect-video relative overflow-hidden" style="background:radial-gradient(420px 280px at 70% 18%, rgba(255,255,255,.07), transparent 60%), linear-gradient(135deg,#10101a,#000 70%)"></div>
-        <div class="p-6 md:p-8">
-          <div class="flex items-center justify-between mb-3">
-            <span class="uppercase tracking-widest text-white/40 text-xs">Recurrente</span>
-            <span class="liquid-glass rounded-full p-2 text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
-          </div>
-          <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Artists & Media</h3>
-          <p class="text-white/50 text-sm leading-relaxed">Membresías de artistas y el medio digital de la electrónica del Eje Cafetero. Ingresos recurrentes y audiencia que conecta la escena.</p>
+      <div class="reveal liquid-glass rounded-3xl p-6 md:p-8">
+        <div class="flex items-center justify-between mb-4">
+          <span class="serif text-white/30 text-3xl">01</span>
+          <span class="uppercase tracking-widest text-white/40 text-xs">Recurrente</span>
         </div>
+        <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Gato Verde Artists</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">El desarrollo de artistas: membresía con página web, presskit, asistente de IA, ensayo mensual en estudio y comercialización musical. Aunque empieces de cero, sales como profesional.</p>
+        <a href="unete/index.html" class="text-white/70 hover:text-white text-sm font-medium inline-flex items-center gap-2">Únete <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
       </div>
-      <div class="reveal liquid-glass rounded-3xl overflow-hidden group" style="transition-delay:.15s">
-        <div class="aspect-video relative overflow-hidden" style="background:radial-gradient(420px 280px at 30% 18%, rgba(255,255,255,.07), transparent 60%), linear-gradient(135deg,#10101a,#000 70%)"></div>
-        <div class="p-6 md:p-8">
-          <div class="flex items-center justify-between mb-3">
-            <span class="uppercase tracking-widest text-white/40 text-xs">Comunidad</span>
-            <span class="liquid-glass rounded-full p-2 text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
-          </div>
-          <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Experiences & Network</h3>
-          <p class="text-white/50 text-sm leading-relaxed">Eventos como herramienta de comunidad y contenido, y una red de aliados: venues, marcas, medios y artistas.</p>
+      <div class="reveal liquid-glass rounded-3xl p-6 md:p-8" style="transition-delay:.1s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="serif text-white/30 text-3xl">02</span>
+          <span class="uppercase tracking-widest text-white/40 text-xs">Audiencia</span>
         </div>
+        <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Gato Verde Media</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">El medio digital de la electrónica del Eje Cafetero: historia, cultura, educación y actualidad de la escena, en cortos, entrevistas, sets y documentales.</p>
+        <a href="https://www.youtube.com/@gatoverdemanizales" target="_blank" rel="noopener" class="text-white/70 hover:text-white text-sm font-medium inline-flex items-center gap-2">Mira el contenido <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+      </div>
+      <div class="reveal liquid-glass rounded-3xl p-6 md:p-8" style="transition-delay:.15s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="serif text-white/30 text-3xl">03</span>
+          <span class="uppercase tracking-widest text-white/40 text-xs">Comunidad</span>
+        </div>
+        <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Gato Verde Experiences</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">Los eventos son herramienta, no el fin: Open Decks para descubrir talento, Booth Sessions grabadas, Rooftop Sessions boutique, La Vieja Guardia y conferencias de industria.</p>
+        <button data-tally-open="WOd2dk" data-tally-overlay="1" class="text-white/70 hover:text-white text-sm font-medium inline-flex items-center gap-2">Entérate primero <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></button>
+      </div>
+      <div class="reveal liquid-glass rounded-3xl p-6 md:p-8" style="transition-delay:.2s">
+        <div class="flex items-center justify-between mb-4">
+          <span class="serif text-white/30 text-3xl">04</span>
+          <span class="uppercase tracking-widest text-white/40 text-xs">Industria</span>
+        </div>
+        <h3 class="serif text-white text-2xl md:text-3xl mb-3 tracking-tight">Gato Verde Network</h3>
+        <p class="text-white/50 text-sm leading-relaxed mb-4">La red que conecta la escena: venues, rooftops, marcas, medios y creativos. Un patrocinio aquí no es un logo en un flyer — es acceso a comunidad, contenido, artistas y audiencia segmentada.</p>
+        <a href="#aliados" class="text-white/70 hover:text-white text-sm font-medium inline-flex items-center gap-2">Sé aliado <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
       </div>
     </div>
   </div>
@@ -249,6 +268,41 @@
     <span>Press Kit</span><i>✦</i><span>Distribución</span><i>✦</i><span>Booking</span><i>✦</i><span>Management</span><i>✦</i><span>Contenido</span><i>✦</i><span>Marca personal</span><i>✦</i><span>Producción</span><i>✦</i>
   </div>
 </div>
+
+<!-- ================= EL BOOTH ================= -->
+<section id="booth" class="py-28 md:py-36 px-6 overflow-hidden relative">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_60%)]"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="reveal-x-l">
+        <p class="text-white/40 text-sm tracking-widest uppercase">El estudio</p>
+        <h2 class="serif text-4xl md:text-6xl text-white tracking-tight mt-4 mb-6">El <span class="italic text-white/60">Booth.</span></h2>
+        <p class="text-white/70 text-base md:text-lg leading-relaxed mb-5">
+          Nuestro estudio local en Manizales: equipos profesionales de mezcla y un set
+          de grabación donde tu sesión queda registrada en audio y video con calidad de industria.
+        </p>
+        <p class="text-white/50 text-sm leading-relaxed mb-8">
+          Aquí ensayan cada mes los artistas de Gato Verde, aquí se graban las
+          <span class="text-white/80">Booth Sessions</span> — nuestro formato propio — y de aquí
+          sale el contenido que mueve la escena: tu set listo para tus redes, tu booking y los canales de Gato Verde Media.
+        </p>
+        <div class="flex gap-3 flex-wrap">
+          <a href="unete/index.html" class="inline-block bg-white text-black rounded-full px-8 py-3 text-sm font-medium hover:scale-105 transition">Quiero ensayar aquí</a>
+          <a href="https://www.youtube.com/@gatoverdemanizales" target="_blank" rel="noopener" class="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/5 transition inline-block">Ver sesiones</a>
+        </div>
+      </div>
+      <div class="reveal-x-r rounded-3xl overflow-hidden aspect-[4/3] liquid-glass relative" style="background:linear-gradient(135deg,#0e0e13,#000 70%)">
+        <video muted loop playsinline preload="none" data-lazy class="absolute inset-0 w-full h-full object-cover">
+          <source data-src="assets/video/clip2.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-5 left-6 right-6 flex items-end justify-between">
+          <span class="text-white/70 text-xs tracking-widest uppercase">Booth Sessions · Manizales</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= ARTISTAS ================= -->
 <section id="artistas" class="py-28 md:py-36 px-6 overflow-hidden">
@@ -265,7 +319,11 @@
         </div>
         <span class="absolute top-5 right-5 liquid-glass rounded-full p-2 text-white opacity-0 group-hover:opacity-100 transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </a>
-      <div class="reveal liquid-glass rounded-3xl aspect-[3/4] flex items-center justify-center" style="transition-delay:.1s"><span class="text-white/40 text-xs tracking-widest uppercase">Próximamente</span></div>
+      <a href="unete/index.html" class="reveal liquid-glass rounded-3xl aspect-[3/4] flex flex-col items-center justify-center text-center p-8 group" style="transition-delay:.1s">
+        <span class="serif text-3xl text-white/80 mb-3 group-hover:text-white transition">Este espacio<br><em class="italic">es tuyo.</em></span>
+        <span class="text-white/40 text-xs tracking-widest uppercase mb-6">Cupos de fundador abiertos</span>
+        <span class="bg-white text-black rounded-full px-6 py-2 text-sm font-medium group-hover:scale-105 transition">Únete</span>
+      </a>
       <div class="reveal liquid-glass rounded-3xl aspect-[3/4] flex items-center justify-center" style="transition-delay:.2s"><span class="text-white/40 text-xs tracking-widest uppercase">Próximamente</span></div>
     </div>
   </div>
@@ -308,6 +366,7 @@
         <h4 class="text-white/40 text-xs tracking-widest uppercase mb-4">Explora</h4>
         <a href="#about" class="block text-white/70 hover:text-white text-sm py-1">Qué es</a>
         <a href="#unidades" class="block text-white/70 hover:text-white text-sm py-1">Unidades</a>
+        <a href="#booth" class="block text-white/70 hover:text-white text-sm py-1">El Booth</a>
         <a href="#artistas" class="block text-white/70 hover:text-white text-sm py-1">Artistas</a>
         <a href="#aliados" class="block text-white/70 hover:text-white text-sm py-1">Aliados</a>
       </div>
@@ -324,7 +383,23 @@
   </div>
 </footer>
 
+<script async src="https://tally.so/widgets/embed.js"></script>
 <script>
+  /* ---------- popup comunidad: Enter en el input dispara el botón ---------- */
+  const commInput=document.getElementById('commEmail');
+  if(commInput){ commInput.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('commBtn').click(); } }); }
+
+  /* ---------- videos con carga diferida ---------- */
+  const vio=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting){
+      const v=e.target;
+      v.querySelectorAll('source[data-src]').forEach(s=>{s.src=s.dataset.src});
+      v.load(); v.play().catch(()=>{});
+      vio.unobserve(v);
+    }
+  })},{rootMargin:'200px'});
+  document.querySelectorAll('video[data-lazy]').forEach(v=>vio.observe(v));
+
   /* ---------- reveals ---------- */
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'-60px'});
   document.querySelectorAll('.reveal,.reveal-x-l,.reveal-x-r').forEach(el=>io.observe(el));
