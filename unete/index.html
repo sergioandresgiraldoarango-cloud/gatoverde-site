@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Únete a Gato Verde Artists</title>
+<meta name="description" content="Únete a Gato Verde Artists. Cuéntanos de ti y creamos tu página, presskit y marca — aunque empieces de cero.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#000;color:#fff;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Instrument Serif',serif}
+  ::selection{background:#fff;color:#000}
+  .liquid-glass{background:rgba(255,255,255,.01);background-blend-mode:luminosity;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.1);position:relative;overflow:hidden}
+  .liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,.15) 80%,rgba(255,255,255,.45) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .reveal{opacity:0;transform:translateY(36px);transition:.9s cubic-bezier(.16,.8,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  /* glow ambiental */
+  .amb{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 500px at 50% -10%,rgba(255,255,255,.06),transparent 60%)}
+</style>
+</head>
+<body class="bg-black">
+<div class="amb"></div>
+
+<!-- nav -->
+<div class="relative z-20 px-6 py-6">
+  <div class="liquid-glass rounded-full max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="../index.html" class="flex items-center gap-3">
+      <img src="../assets/gv-isotipo.png" alt="Gato Verde" class="w-7 h-7">
+      <span class="text-white font-semibold text-lg tracking-wide">Gato Verde</span>
+    </a>
+    <a href="../index.html" class="text-white/80 hover:text-white text-sm font-medium transition flex items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver
+    </a>
+  </div>
+</div>
+
+<!-- header -->
+<header class="relative z-10 px-6 pt-16 pb-10 text-center max-w-3xl mx-auto">
+  <p class="reveal text-white/40 text-sm tracking-widest uppercase mb-6">Gato Verde Artists</p>
+  <h1 class="reveal serif text-5xl md:text-7xl leading-[1] tracking-tight" style="transition-delay:.05s">
+    Únete y <em class="italic">crece</em> con nosotros.
+  </h1>
+  <p class="reveal text-white/70 text-base md:text-lg leading-relaxed mt-7 max-w-xl mx-auto" style="transition-delay:.1s">
+    Cuéntanos de ti. Con esta info creamos tu página web, tu presskit y tu marca.
+    ¿No tienes bio, logo o fotos? Tranquilo — eso lo resolvemos nosotros.
+  </p>
+</header>
+
+<!-- pasos -->
+<section class="relative z-10 px-6 pb-12 max-w-4xl mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="reveal liquid-glass rounded-2xl p-6 text-center">
+      <div class="serif text-3xl text-white/80 mb-2">01</div>
+      <h3 class="text-white font-medium mb-1">Llenas el formulario</h3>
+      <p class="text-white/50 text-sm">Una sola vez, sin tecnicismos.</p>
+    </div>
+    <div class="reveal liquid-glass rounded-2xl p-6 text-center" style="transition-delay:.1s">
+      <div class="serif text-3xl text-white/80 mb-2">02</div>
+      <h3 class="text-white font-medium mb-1">Creamos tu marca</h3>
+      <p class="text-white/50 text-sm">Página, presskit, bio y más.</p>
+    </div>
+    <div class="reveal liquid-glass rounded-2xl p-6 text-center" style="transition-delay:.2s">
+      <div class="serif text-3xl text-white/80 mb-2">03</div>
+      <h3 class="text-white font-medium mb-1">Sales a la escena</h3>
+      <p class="text-white/50 text-sm">Te gestionas y creces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO (incrustar Tally aquí) -->
+<section class="relative z-10 px-6 pb-32 max-w-3xl mx-auto">
+  <div class="liquid-glass rounded-3xl p-3 md:p-4">
+
+    <!-- ===================================================================
+         INCRUSTAR TALLY AQUÍ.
+         Cuando tengas el form en Tally:
+         1) Tally → Share → Embed → copia el FORM_ID (o el código de embed).
+         2) Reemplaza TODO el bloque ".form-placeholder" de abajo por:
+
+         <iframe data-tally-src="https://tally.so/embed/FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                 loading="lazy" width="100%" height="1200" frameborder="0"
+                 title="Únete a Gato Verde Artists" style="border:0;border-radius:16px"></iframe>
+         <script src="https://tally.so/widgets/embed.js"></script>
+
+         (Configura el Tally con fondo transparente / tema oscuro para que combine.)
+    ==================================================================== -->
+
+    <div class="form-placeholder rounded-2xl border border-dashed border-white/15 p-12 text-center">
+      <div class="serif text-4xl text-white/80 mb-4">Formulario en camino</div>
+      <p class="text-white/50 text-sm max-w-md mx-auto mb-8">
+        Aquí se incrustará el formulario de Tally. Sigue el blueprint
+        (<span class="text-white/70">docs/formulario-tally.md</span>) para armarlo
+        y luego pega el código de embed en este archivo.
+      </p>
+      <a href="mailto:hola@gatoverdemanizales.com"
+         class="inline-block bg-white text-black rounded-full px-8 py-3 text-sm font-medium hover:scale-105 transition">
+        Mientras tanto, escríbenos
+      </a>
+    </div>
+
+  </div>
+  <p class="text-center text-white/30 text-xs mt-6">Tus datos se usan solo para crear tu presencia profesional con Gato Verde.</p>
+</section>
+
+<!-- footer mini -->
+<footer class="relative z-10 border-t border-white/10 py-10 px-6 text-center">
+  <p class="text-white/40 text-xs">© 2026 Gato Verde · Manizales, Colombia</p>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
