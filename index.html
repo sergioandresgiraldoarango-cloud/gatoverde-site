@@ -292,13 +292,25 @@
           <a href="https://www.youtube.com/@gatoverdemanizales" target="_blank" rel="noopener" class="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/5 transition inline-block">Ver sets completos</a>
         </div>
       </div>
-      <div class="reveal-x-r flex justify-center">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/gatoverde.music/reel/DZNdYxVxUlg/" data-instgrm-version="14" style="background:#000;border:0;border-radius:24px;margin:0;max-width:400px;width:100%;min-width:280px;box-shadow:0 0 40px rgba(255,255,255,.06)"></blockquote>
+      <div class="flex justify-center">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/gatoverde.music/reel/DZNdYxVxUlg/?utm_source=ig_embed" data-instgrm-version="14" style="background:#000;border:0;border-radius:24px;margin:0;max-width:400px;width:100%;min-width:280px;box-shadow:0 0 40px rgba(255,255,255,.06)">
+          <a href="https://www.instagram.com/gatoverde.music/reel/DZNdYxVxUlg/?utm_source=ig_embed" target="_blank" rel="noopener" style="color:#fff;display:block;padding:40px 20px;text-align:center;font-size:14px">Ver esta sesión de Booth Local en Instagram → @gatoverde.music</a>
+        </blockquote>
       </div>
     </div>
   </div>
 </section>
 <script async src="https://www.instagram.com/embed.js"></script>
+<script>
+  window.addEventListener('load', function(){
+    var tries = 0;
+    var t = setInterval(function(){
+      tries++;
+      if (window.instgrm && window.instgrm.Embeds) { window.instgrm.Embeds.process(); }
+      if (tries >= 5) clearInterval(t);
+    }, 1500);
+  });
+</script>
 
 <!-- ================= ARTISTAS ================= -->
 <section id="artistas" class="py-28 md:py-36 px-6 overflow-hidden">
