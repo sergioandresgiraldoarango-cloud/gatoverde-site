@@ -1,0 +1,3 @@
+Gato Verde — sitio v1.0.1
+Despliegue automático GitHub → Netlify activado el 3 de julio de 2026.
+Prueba de flujo: Claude edita → push → Netlify publica solo.
