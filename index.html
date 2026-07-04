@@ -316,6 +316,21 @@
   </div>
 </section>
 
+<!-- ================= PLAYLIST ================= -->
+<section id="playlist" class="py-20 md:py-28 px-6 overflow-hidden relative">
+  <div class="max-w-6xl mx-auto">
+    <p class="reveal text-white/40 text-sm tracking-widest uppercase">Gato Verde Media</p>
+    <h2 class="reveal serif text-4xl md:text-6xl text-white tracking-tight mt-4 mb-4">Escucha <span class="italic text-white/50">lo nuestro.</span></h2>
+    <p class="reveal text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-xl">Nuestra selección de música electrónica, siempre viva: la actualizamos desde YouTube Music y aquí suena al instante. Navega la lista y dale play.</p>
+    <div class="reveal liquid-glass rounded-3xl overflow-hidden p-2 md:p-3">
+      <div class="aspect-video rounded-2xl overflow-hidden">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-" title="Playlist Gato Verde — Recomendados Electronic Music" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" class="w-full h-full"></iframe>
+      </div>
+    </div>
+    <p class="reveal text-white/30 text-xs mt-4">Tip: usa el ícono de lista dentro del reproductor para navegar todos los tracks. <a href="https://music.youtube.com/playlist?list=PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-" target="_blank" rel="noopener" class="text-white/50 hover:text-white underline">Ábrela en YouTube Music</a>.</p>
+  </div>
+</section>
+
 <!-- ================= ARTISTAS ================= -->
 <section id="artistas" class="py-28 md:py-36 px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto">
@@ -395,7 +410,32 @@
   </div>
 </footer>
 
+<!-- reproductor flotante: track oficial -->
+<div id="gv-player" class="fixed bottom-5 right-5 z-50 liquid-glass rounded-full pl-5 pr-2 py-2 flex items-center gap-3" style="background:rgba(0,0,0,.6);backdrop-filter:blur(10px)">
+  <div class="leading-tight hidden sm:block">
+    <div class="text-white text-xs font-semibold tracking-wide">Gato Verde <span class="text-white/40 font-normal">· track oficial</span></div>
+    <div class="text-white/50 text-[11px]">Daniel Chica, Nook &amp; Visionare</div>
+  </div>
+  <button id="gv-play" aria-label="Reproducir el track oficial de Gato Verde" class="bg-white text-black rounded-full p-3 hover:scale-105 transition">
+    <svg id="gv-ic-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+    <svg id="gv-ic-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
+  </button>
+  <audio id="gv-audio" preload="none" src="assets/audio/gatoverde-track.mp3"></audio>
+</div>
+
 <script async src="https://tally.so/widgets/embed.js"></script>
+<script>
+  /* ---------- reproductor flotante ---------- */
+  (function(){
+    const a=document.getElementById('gv-audio'), b=document.getElementById('gv-play');
+    const ip=document.getElementById('gv-ic-play'), iz=document.getElementById('gv-ic-pause');
+    function ui(playing){ ip.style.display=playing?'none':'block'; iz.style.display=playing?'block':'none'; }
+    b.addEventListener('click', function(){ if(a.paused){ a.play(); } else { a.pause(); } });
+    a.addEventListener('play', function(){ ui(true); });
+    a.addEventListener('pause', function(){ ui(false); });
+    a.addEventListener('ended', function(){ a.currentTime=0; ui(false); });
+  })();
+</script>
 <script>
   /* ---------- popup comunidad: Enter en el input dispara el botón ---------- */
   const commInput=document.getElementById('commEmail');

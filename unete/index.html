@@ -158,9 +158,33 @@
   <p class="text-white/40 text-xs">© 2026 Gato Verde · Manizales, Colombia</p>
 </footer>
 
+<!-- reproductor flotante: track oficial -->
+<div id="gv-player" class="fixed bottom-5 right-5 z-50 liquid-glass rounded-full pl-5 pr-2 py-2 flex items-center gap-3" style="background:rgba(0,0,0,.6);backdrop-filter:blur(10px)">
+  <div class="leading-tight hidden sm:block">
+    <div class="text-white text-xs font-semibold tracking-wide">Gato Verde <span class="text-white/40 font-normal">· track oficial</span></div>
+    <div class="text-white/50 text-[11px]">Daniel Chica, Nook &amp; Visionare</div>
+  </div>
+  <button id="gv-play" aria-label="Reproducir el track oficial de Gato Verde" class="bg-white text-black rounded-full p-3 hover:scale-105 transition">
+    <svg id="gv-ic-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+    <svg id="gv-ic-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
+  </button>
+  <audio id="gv-audio" preload="none" src="../assets/audio/gatoverde-track.mp3"></audio>
+</div>
+
 <script>
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ---------- reproductor flotante ---------- */
+  (function(){
+    const a=document.getElementById('gv-audio'), b=document.getElementById('gv-play');
+    const ip=document.getElementById('gv-ic-play'), iz=document.getElementById('gv-ic-pause');
+    function ui(playing){ ip.style.display=playing?'none':'block'; iz.style.display=playing?'block':'none'; }
+    b.addEventListener('click', function(){ if(a.paused){ a.play(); } else { a.pause(); } });
+    a.addEventListener('play', function(){ ui(true); });
+    a.addEventListener('pause', function(){ ui(false); });
+    a.addEventListener('ended', function(){ a.currentTime=0; ui(false); });
+  })();
 </script>
 </body>
 </html>
