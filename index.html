@@ -316,18 +316,26 @@
   </div>
 </section>
 
-<!-- ================= PLAYLIST ================= -->
+<!-- ================= PLAYLIST / RECOMENDADOS ================= -->
 <section id="playlist" class="py-20 md:py-28 px-6 overflow-hidden relative">
   <div class="max-w-6xl mx-auto">
     <p class="reveal text-white/40 text-sm tracking-widest uppercase">Gato Verde Media</p>
-    <h2 class="reveal serif text-4xl md:text-6xl text-white tracking-tight mt-4 mb-4">Escucha <span class="italic text-white/50">lo nuestro.</span></h2>
-    <p class="reveal text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-xl">Nuestra selección de música electrónica, siempre viva: la actualizamos desde YouTube Music y aquí suena al instante. Navega la lista y dale play.</p>
-    <div class="reveal liquid-glass rounded-3xl overflow-hidden p-2 md:p-3">
-      <div class="aspect-video rounded-2xl overflow-hidden">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-" title="Playlist Gato Verde — Recomendados Electronic Music" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" class="w-full h-full"></iframe>
+    <h2 class="reveal serif text-4xl md:text-6xl text-white tracking-tight mt-4 mb-4">Recomendados<span class="italic text-white/50">.</span></h2>
+    <p class="reveal text-white/50 text-sm md:text-base leading-relaxed mb-10 max-w-xl">Nuestra selección de música electrónica, siempre viva: se actualiza sola desde YouTube Music. Elige un track de la lista y dale play.</p>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
+      <div class="reveal md:col-span-3 liquid-glass rounded-3xl overflow-hidden p-2 md:p-3">
+        <div class="aspect-video rounded-2xl overflow-hidden bg-black">
+          <div id="ytp" class="w-full h-full"></div>
+        </div>
+      </div>
+      <div class="reveal md:col-span-2 liquid-glass rounded-3xl p-4" style="transition-delay:.1s">
+        <p class="text-white/40 text-xs tracking-widest uppercase px-2 pt-1 pb-3">La lista</p>
+        <ol id="yt-list" class="max-h-[360px] overflow-y-auto pr-1" style="scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent">
+          <li class="text-white/40 text-sm px-2 py-2">Cargando lista…</li>
+        </ol>
       </div>
     </div>
-    <p class="reveal text-white/30 text-xs mt-4">Tip: usa el ícono de lista dentro del reproductor para navegar todos los tracks. <a href="https://music.youtube.com/playlist?list=PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-" target="_blank" rel="noopener" class="text-white/50 hover:text-white underline">Ábrela en YouTube Music</a>.</p>
+    <p class="reveal text-white/30 text-xs mt-4"><a href="https://music.youtube.com/playlist?list=PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-" target="_blank" rel="noopener" class="text-white/50 hover:text-white underline">Abre la lista completa en YouTube Music</a>.</p>
   </div>
 </section>
 
@@ -431,9 +439,57 @@
     const ip=document.getElementById('gv-ic-play'), iz=document.getElementById('gv-ic-pause');
     function ui(playing){ ip.style.display=playing?'none':'block'; iz.style.display=playing?'block':'none'; }
     b.addEventListener('click', function(){ if(a.paused){ a.play(); } else { a.pause(); } });
-    a.addEventListener('play', function(){ ui(true); });
+    a.addEventListener('play', function(){ ui(true); if(window.__ytPlayer && window.__ytPlayer.pauseVideo){ try{ window.__ytPlayer.pauseVideo(); }catch(e){} } });
     a.addEventListener('pause', function(){ ui(false); });
     a.addEventListener('ended', function(){ a.currentTime=0; ui(false); });
+  })();
+
+  /* ---------- Recomendados: lista viva desde YouTube Music ---------- */
+  (function(){
+    const LISTA='PLTmNkdlRRLuFYagJs_jqe_CHOZmc4y_T-';
+    const ol=document.getElementById('yt-list');
+    if(!ol) return;
+    const tag=document.createElement('script'); tag.src='https://www.youtube.com/iframe_api'; document.head.appendChild(tag);
+    window.onYouTubeIframeAPIReady=function(){
+      window.__ytPlayer=new YT.Player('ytp',{
+        width:'100%', height:'100%',
+        playerVars:{ listType:'playlist', list:LISTA, rel:0, color:'white' },
+        events:{
+          onReady:function(){ setTimeout(construirLista, 800); },
+          onStateChange:function(e){
+            marcarActivo();
+            if(e.data===1){ const a=document.getElementById('gv-audio'); if(a && !a.paused){ a.pause(); } }
+          }
+        }
+      });
+    };
+    function construirLista(){
+      const ids=window.__ytPlayer.getPlaylist();
+      if(!ids || !ids.length){ setTimeout(construirLista, 1200); return; }
+      ol.innerHTML='';
+      ids.forEach(function(id, i){
+        const li=document.createElement('li');
+        li.dataset.idx=i;
+        li.className='yt-item flex items-center gap-3 px-2 py-2.5 rounded-xl cursor-pointer hover:bg-white/5 transition';
+        li.innerHTML='<span class="serif text-white/30 text-lg w-6 text-right shrink-0">'+(i+1)+'</span><span class="titulo text-white/70 text-sm leading-snug">Track '+(i+1)+'</span>';
+        li.addEventListener('click', function(){ window.__ytPlayer.playVideoAt(i); });
+        ol.appendChild(li);
+        fetch('https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D'+id)
+          .then(function(r){ return r.json(); })
+          .then(function(d){ if(d && d.title){ li.querySelector('.titulo').textContent=d.title; } })
+          .catch(function(){});
+      });
+      marcarActivo();
+    }
+    function marcarActivo(){
+      if(!window.__ytPlayer || !window.__ytPlayer.getPlaylistIndex) return;
+      const idx=window.__ytPlayer.getPlaylistIndex();
+      document.querySelectorAll('#yt-list .yt-item').forEach(function(li){
+        const activo=(parseInt(li.dataset.idx,10)===idx);
+        li.style.background=activo?'rgba(255,255,255,.08)':'';
+        li.querySelector('.titulo').style.color=activo?'#fff':'';
+      });
+    }
   })();
 </script>
 <script>
