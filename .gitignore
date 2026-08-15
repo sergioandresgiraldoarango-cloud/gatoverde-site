@@ -1,0 +1,7 @@
+# Paquetes de material FUENTE. No entran al repo por dos razones:
+#  1. `deploy/` se publica: cualquier cosa versionada aqui queda descargable en el dominio.
+#  2. Son los originales sin optimizar; lo que se sirve son las versiones ligeras.
+# Verificado el 15-ago-2026: `artists/rami.zip` (1,8 MB) trae los ORIGINALES —logo.png de 652 KB
+# frente a los 9 KB desplegados, y las 5 fotos de prensa entre 40% y 80% mas pesadas—.
+# NO se borra: es material fuente y no hay otra copia localizada.
+*.zip
